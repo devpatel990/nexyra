@@ -812,6 +812,12 @@
             gap: 14px;
             flex: 1;
             min-width: 0;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .mini-player-track:hover {
+            opacity: 0.8;
         }
 
         .mini-player-img {
@@ -949,6 +955,190 @@
             height: 100%;
             background: var(--text-primary);
             border-radius: 2px;
+        }
+
+        /* Full Screen Player */
+        .fullscreen-player {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 300;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fullscreen-player.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fullscreen-player-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: -1;
+        }
+
+        .fullscreen-player-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(124, 58, 237, 0.2) 0%, transparent 60%);
+        }
+
+        .fullscreen-player-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            gap: 32px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .fullscreen-player-header {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .fullscreen-close-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .fullscreen-close-btn:hover {
+            background: var(--glass-hover);
+        }
+
+        .fullscreen-playing-now {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .fullscreen-player-artwork {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: artwork-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes artwork-glow {
+            0%, 100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(124, 58, 237, 0.2); }
+            50% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 60px rgba(124, 58, 237, 0.4); }
+        }
+
+        .fullscreen-player-artwork img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fullscreen-player-info {
+            text-align: center;
+        }
+
+        .fullscreen-track-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .fullscreen-track-artist {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .fullscreen-progress {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .fullscreen-times {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .fullscreen-controls {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .fullscreen-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .fullscreen-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .fullscreen-play-btn {
+            width: 72px;
+            height: 72px;
+            background: var(--accent-gradient);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .fullscreen-play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.5);
+        }
+
+        .fullscreen-volume {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 200px;
+            margin-top: 20px;
         }
 
         /* Equalizer Animation */
@@ -1303,7 +1493,7 @@
     <!-- Mini Player -->
     <div class="mini-player" id="miniPlayer">
         <div class="mini-player-content">
-            <div class="mini-player-track">
+            <div class="mini-player-track" id="miniPlayerClickArea">
                 <img src="" alt="" class="mini-player-img" id="playerImg">
                 <div class="mini-player-info">
                     <div class="mini-player-name" id="playerName">Track Name</div>
@@ -1337,6 +1527,58 @@
                 </button>
                 <div class="volume-slider" id="volumeSlider">
                     <div class="volume-slider-fill" id="volumeFill" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Screen Player -->
+    <div class="fullscreen-player" id="fullscreenPlayer">
+        <div class="fullscreen-player-bg" id="fullscreenBg"></div>
+        <div class="fullscreen-player-content">
+            <div class="fullscreen-player-header">
+                <button class="fullscreen-close-btn" id="closeFullscreen">
+                    <i data-lucide="chevron-down" style="width: 32px; height: 32px;"></i>
+                </button>
+                <span class="fullscreen-playing-now">Now Playing</span>
+                <div style="width: 32px;"></div>
+            </div>
+            
+            <div class="fullscreen-player-artwork">
+                <img src="" alt="" id="fullscreenImg">
+            </div>
+            
+            <div class="fullscreen-player-info">
+                <div class="fullscreen-track-name" id="fullscreenName">Track Name</div>
+                <div class="fullscreen-track-artist" id="fullscreenArtist">Artist Name</div>
+            </div>
+            
+            <div class="fullscreen-progress">
+                <div class="progress-bar" id="fullscreenProgressBar">
+                    <div class="progress-bar-fill" id="fullscreenProgressFill" style="width: 0%"></div>
+                </div>
+                <div class="fullscreen-times">
+                    <span id="fullscreenCurrentTime">0:00</span>
+                    <span id="fullscreenDuration">0:00</span>
+                </div>
+            </div>
+            
+            <div class="fullscreen-controls">
+                <button class="fullscreen-btn" id="fullscreenPrevBtn">
+                    <i data-lucide="skip-back" style="width: 32px; height: 32px;"></i>
+                </button>
+                <button class="fullscreen-btn fullscreen-play-btn" id="fullscreenPlayBtn">
+                    <i data-lucide="play" style="width: 40px; height: 40px;" id="fullscreenPlayIcon"></i>
+                </button>
+                <button class="fullscreen-btn" id="fullscreenNextBtn">
+                    <i data-lucide="skip-forward" style="width: 32px; height: 32px;"></i>
+                </button>
+            </div>
+            
+            <div class="fullscreen-volume">
+                <i data-lucide="volume-2" style="width: 20px; height: 20px; color: var(--text-secondary);"></i>
+                <div class="volume-slider" id="fullscreenVolumeSlider">
+                    <div class="volume-slider-fill" id="fullscreenVolumeFill" style="width: 70%"></div>
                 </div>
             </div>
         </div>
@@ -1619,11 +1861,14 @@
             state.audio.addEventListener('timeupdate', () => {
                 const progress = (state.audio.currentTime / state.audio.duration) * 100 || 0;
                 document.getElementById('progressFill').style.width = `${progress}%`;
+                document.getElementById('fullscreenProgressFill').style.width = `${progress}%`;
                 document.getElementById('currentTime').textContent = formatDuration(state.audio.currentTime);
+                document.getElementById('fullscreenCurrentTime').textContent = formatDuration(state.audio.currentTime);
             });
             
             state.audio.addEventListener('loadedmetadata', () => {
                 document.getElementById('duration').textContent = formatDuration(state.audio.duration);
+                document.getElementById('fullscreenDuration').textContent = formatDuration(state.audio.duration);
             });
             
             state.audio.addEventListener('ended', () => {
@@ -1706,18 +1951,47 @@
         function updateMiniPlayerUI() {
             if (!state.currentTrack) return;
             
+            // Update mini player
             document.getElementById('playerImg').src = state.currentTrack.image;
             document.getElementById('playerName').textContent = state.currentTrack.name;
             document.getElementById('playerArtist').textContent = state.currentTrack.artist;
+            
+            // Update fullscreen player
+            document.getElementById('fullscreenImg').src = state.currentTrack.image;
+            document.getElementById('fullscreenName').textContent = state.currentTrack.name;
+            document.getElementById('fullscreenArtist').textContent = state.currentTrack.artist;
         }
 
-        function updatePlayButton() {
-            const playIcon = document.getElementById('playIcon');
+        function openFullscreenPlayer() {
+            document.getElementById('fullscreenPlayer').classList.add('active');
+            updateFullscreenPlayButton();
+        }
+
+        function closeFullscreenPlayer() {
+            document.getElementById('fullscreenPlayer').classList.remove('active');
+        }
+
+        function updateFullscreenPlayButton() {
+            const playIcon = document.getElementById('fullscreenPlayIcon');
             if (state.isPlaying) {
                 playIcon.setAttribute('data-lucide', 'pause');
             } else {
                 playIcon.setAttribute('data-lucide', 'play');
             }
+            lucide.createIcons();
+        }
+
+        function updatePlayButton() {
+            const playIcon = document.getElementById('playIcon');
+            const fullscreenPlayIcon = document.getElementById('fullscreenPlayIcon');
+            if (state.isPlaying) {
+                playIcon.setAttribute('data-lucide', 'pause');
+                fullscreenPlayIcon.setAttribute('data-lucide', 'pause');
+            } else {
+                playIcon.setAttribute('data-lucide', 'play');
+                fullscreenPlayIcon.setAttribute('data-lucide', 'play');
+            }
+            lucide.createIcons();
         }
 
         // ==========================================
@@ -2090,6 +2364,35 @@
                     e.preventDefault();
                     togglePlay();
                 }
+            });
+            
+            // Fullscreen player - click on mini player to expand
+            document.getElementById('miniPlayerClickArea').addEventListener('click', () => {
+                if (state.currentTrack) {
+                    openFullscreenPlayer();
+                }
+            });
+            
+            // Close fullscreen
+            document.getElementById('closeFullscreen').addEventListener('click', closeFullscreenPlayer);
+            
+            // Fullscreen controls
+            document.getElementById('fullscreenPlayBtn').addEventListener('click', togglePlay);
+            document.getElementById('fullscreenPrevBtn').addEventListener('click', playPrev);
+            document.getElementById('fullscreenNextBtn').addEventListener('click', playNext);
+            
+            // Fullscreen progress bar
+            document.getElementById('fullscreenProgressBar').addEventListener('click', (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const percent = ((e.clientX - rect.left) / rect.width) * 100;
+                seekTo(percent);
+            });
+            
+            // Fullscreen volume
+            document.getElementById('fullscreenVolumeSlider').addEventListener('click', (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const percent = ((e.clientX - rect.left) / rect.width);
+                setVolume(Math.max(0, Math.min(1, percent)));
             });
         }
 
