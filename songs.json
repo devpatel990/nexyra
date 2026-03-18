@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "name": "Heat Waves",
+    "artist": "Glass Animals",
+    "album": "Dreamland",
+    "image": "https://i.scdn.co/image/ab67616d0000b273a4a6c8390a374b951a10f656",
+    "duration": 239000,
+    "audio": "audio/heat-waves.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=mT7VhZpbQTE"
+  },
+  {
+    "id": "2",
+    "name": "Blinding Lights",
+    "artist": "The Weeknd",
+    "album": "After Hours",
+    "image": "https://i.scdn.co/image/ab67616d0000b2730c2f6e2a3b3c5d4e5f6a7b8c",
+    "duration": 200000,
+    "audio": "audio/blinding-lights.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=4NRXx6U8ABQ"
+  },
+  {
+    "id": "3",
+    "name": "Shape of You",
+    "artist": "Ed Sheeran",
+    "album": "Divide",
+    "image": "https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96",
+    "duration": 233000,
+    "audio": "audio/shape-of-you.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=7Livek5bGr4"
+  },
+  {
+    "id": "4",
+    "name": "As It Was",
+    "artist": "Harry Styles",
+    "album": "Harry's House",
+    "image": "https://i.scdn.co/image/ab67616d0000b273cf842bb3f3e9f40736752a06",
+    "duration": 167000,
+    "audio": "audio/as-it-was.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=H5mM3OGQa_k"
+  },
+  {
+    "id": "5",
+    "name": "Flowers",
+    "artist": "Miley Cyrus",
+    "album": "Endless Summer Vacation",
+    "image": "https://i.scdn.co/image/ab67616d0000b273a9c3b06e24f5a5c9f8e7d6b5",
+    "duration": 200000,
+    "audio": "audio/flowers.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=GgpsE1KoRoA"
+  },
+  {
+    "id": "6",
+    "name": "Anti-Hero",
+    "artist": "Taylor Swift",
+    "album": "Midnights",
+    "image": "https://i.scdn.co/image/ab67616d0000b2731ed3f5b45c7f6e2f3d4e5f6a",
+    "duration": 200000,
+    "audio": "audio/anti-hero.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=b1kbLwqLhjk"
+  },
+  {
+    "id": "7",
+    "name": "Stay",
+    "artist": "The Kid LAROI, Justin Bieber",
+    "album": "F*CK LOVE 3",
+    "image": "https://i.scdn.co/image/ab67616d0000b273c3d9b9f9f9f9f9f9f9f9f9f9",
+    "duration": 141000,
+    "audio": "audio/stay.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=kTJczUoc26U"
+  },
+  {
+    "id": "8",
+    "name": "Levitating",
+    "artist": "Dua Lipa",
+    "album": "Future Nostalgia",
+    "image": "https://i.scdn.co/image/ab67616d0000b273c4d5c5f5f5f5f5f5f5f5f5f5",
+    "duration": 203000,
+    "audio": "audio/levitating.mp3",
+    "youtubeUrl": "https://music.youtube.com/watch?v=TUVcZfQe-Kw"
+  }
+]
