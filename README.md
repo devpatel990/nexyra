@@ -1,8 +1,43 @@
+<div align="center">
+
 # Nexyra 🎵
 
-A premium music streaming web application that delivers an exceptional audio discovery experience. Nexyra seamlessly integrates Spotify's vast music catalog with Deezer's audio preview capabilities to create a stunning, cinematic music exploration platform.
+![Nexyra Logo](https://raw.githubusercontent.com/devpatel990/nexyra/main/assets/logo.svg)
 
-![Nexyra Banner](https://via.placeholder.com/1200x400/7c3aed/a855f7?text=Nexyra+Premium+Music+Experience)
+### Premium Music Streaming Experience
+
+A production-ready music web application featuring glassmorphism UI, dual API integration, and cinematic animations.
+
+[![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/devpatel990/nexyra)](https://github.com/devpatel990/nexyra/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/devpatel990/nexyra)](https://github.com/devpatel990/nexyra/network)
+[![Deployed](https://img.shields.io/badge/deployed-GitHub%20Pages-blue)](https://devpatel990.github.io/nexyra)
+
+---
+
+## ✨ Features
+
+### 🎧 Dual API Integration
+- **Spotify API** — Browse artists, albums, and top tracks with metadata
+- **Deezer API** — Stream 30-second audio previews for seamless playback
+
+### 🎨 Premium UI/UX
+- **Glassmorphism Design** — Modern translucent interface with subtle blur effects
+- **Animated Background** — Dynamic gradient mesh with floating particles
+- **Smooth Animations** — GSAP-powered transitions and micro-interactions
+- **Dark Theme** — Deep void black aesthetic with vibrant accent colors
+
+### 🔍 Smart Search
+- Real-time search with 300ms debounce
+- Combined results from Spotify (artists) and Deezer (tracks)
+- Instant playback from search results
+
+### 🎛️ Music Player
+- Full-featured mini player
+- Play/Pause/Next/Previous controls
+- Seekable progress bar
+- Volume control with localStorage persistence
+- Keyboard shortcuts (Space to play/pause)
 
 ## ✨ Features
 
@@ -91,6 +126,8 @@ Navigate to `http://localhost:3000` in your browser
 
 ```
 nexyra/
+├── assets/
+│   └── logo.svg  # Nexyra logo
 ├── index.html    # Complete application
 ├── SPEC.md       # Detailed specifications
 └── README.md     # This file
@@ -129,8 +166,6 @@ This project is for educational and personal use. All music content is provided 
 - [Google Fonts](https://fonts.google.com) — Typography
 
 ---
-
-<div align="center">
 
 **Nexyra** — *Experience Music Like Never Before*
 
