@@ -54,7 +54,7 @@
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(20px);
             z-index: 10000;
-            display: flex;
+            display: flex !important;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -3614,20 +3614,29 @@
             const consentTabs = document.querySelectorAll('.consent-tab');
             const consentPanels = document.querySelectorAll('.consent-panel');
             
-            // Check if already accepted
-            const termsAccepted = localStorage.getItem('nexyra_terms_accepted');
-            const cookiesAccepted = localStorage.getItem('nexyra_cookies_accepted');
+            // Check if already accepted - default to showing modal
+            let termsAccepted = false;
+            let cookiesAccepted = false;
             
-            if (termsAccepted === 'true') {
+            try {
+                termsAccepted = localStorage.getItem('nexyra_terms_accepted') === 'true';
+                cookiesAccepted = localStorage.getItem('nexyra_cookies_accepted') === 'true';
+            } catch (e) {
+                console.error('localStorage error:', e);
+            }
+            
+            if (termsAccepted) {
+                // Returning user - initialize app
                 consentOverlay.style.display = 'none';
-                // Initialize app for returning users
                 initializeApp();
-                if (cookiesAccepted !== 'true') {
+                
+                if (!cookiesAccepted) {
                     setTimeout(() => {
                         cookieBanner.classList.add('active');
                     }, 1000);
                 }
             } else {
+                // First time user - show consent modal
                 consentOverlay.style.display = 'flex';
             }
             
