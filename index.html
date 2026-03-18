@@ -1896,16 +1896,24 @@
 
         function playTrack(track) {
             if (!track.preview) {
+                console.log('No preview URL for track:', track);
                 alert('Preview not available for this track');
                 return;
             }
             
+            console.log('Playing track:', track.name, 'Preview URL:', track.preview);
+            
             state.currentTrack = track;
             state.audio.src = track.preview;
-            state.audio.play();
             
-            showMiniPlayer();
-            updateMiniPlayerUI();
+            state.audio.play().then(() => {
+                console.log('Audio started playing');
+                showMiniPlayer();
+                updateMiniPlayerUI();
+            }).catch(err => {
+                console.error('Error playing audio:', err);
+                alert('Could not play audio: ' + err.message);
+            });
         }
 
         function togglePlay() {
@@ -2156,6 +2164,16 @@
                     }));
                 } else {
                     tracksContainer.innerHTML = getFallbackTracks();
+                    // Also populate queue with fallback tracks that have working previews
+                    const fallbackTracks = [
+                        { id: '1', name: 'Blinding Lights', artist: 'The Weeknd', image: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', duration: 200000 },
+                        { id: '2', name: 'Shape of You', artist: 'Ed Sheeran', image: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', duration: 233000 },
+                        { id: '3', name: 'As It Was', artist: 'Harry Styles', image: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', duration: 167000 },
+                        { id: '4', name: 'Heat Waves', artist: 'Glass Animals', image: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', duration: 239000 },
+                        { id: '5', name: 'Flowers', artist: 'Miley Cyrus', image: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', duration: 200000 },
+                        { id: '6', name: 'Anti-Hero', artist: 'Taylor Swift', image: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', duration: 200000 }
+                    ];
+                    state.queue = fallbackTracks;
                 }
                 
                 // Render playlists from Spotify
@@ -2202,16 +2220,16 @@
         }
 
         function getFallbackTracks() {
-            // Using reliable placeholder images from placeholder.com
+            // Free audio samples from various sources
             const fallbackTracks = [
-                { id: '1', title: 'Blinding Lights', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights' }, duration: 200, preview: null },
-                { id: '2', title: 'Shape of You', artist: { name: 'Ed Sheeran' }, album: { cover_medium: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You' }, duration: 233, preview: null },
-                { id: '3', title: 'As It Was', artist: { name: 'Harry Styles' }, album: { cover_medium: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was' }, duration: 167, preview: null },
-                { id: '4', title: 'Heat Waves', artist: { name: 'Glass Animals' }, album: { cover_medium: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves' }, duration: 239, preview: null },
-                { id: '5', title: 'Flowers', artist: { name: 'Miley Cyrus' }, album: { cover_medium: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers' }, duration: 200, preview: null },
-                { id: '6', title: 'Anti-Hero', artist: { name: 'Taylor Swift' }, album: { cover_medium: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero' }, duration: 200, preview: null },
-                { id: '7', title: 'Creepin\'', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/8b5cf6/ffffff?text=Creepin' }, duration: 222, preview: null },
-                { id: '8', title: 'Rich Flex', artist: { name: 'Drake & 21' }, album: { cover_medium: 'https://placehold.co/300x300/6366f1/ffffff?text=Rich+Flex' }, duration: 238, preview: null }
+                { id: '1', title: 'Blinding Lights', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+                { id: '2', title: 'Shape of You', artist: { name: 'Ed Sheeran' }, album: { cover_medium: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You' }, duration: 233, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+                { id: '3', title: 'As It Was', artist: { name: 'Harry Styles' }, album: { cover_medium: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was' }, duration: 167, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+                { id: '4', title: 'Heat Waves', artist: { name: 'Glass Animals' }, album: { cover_medium: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves' }, duration: 239, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+                { id: '5', title: 'Flowers', artist: { name: 'Miley Cyrus' }, album: { cover_medium: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+                { id: '6', title: 'Anti-Hero', artist: { name: 'Taylor Swift' }, album: { cover_medium: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+                { id: '7', title: 'Creepin\'', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/8b5cf6/ffffff?text=Creepin' }, duration: 222, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+                { id: '8', title: 'Rich Flex', artist: { name: 'Drake & 21' }, album: { cover_medium: 'https://placehold.co/300x300/6366f1/ffffff?text=Rich+Flex' }, duration: 238, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' }
             ];
             return fallbackTracks.map((t, i) => createTrackCard({
                 id: t.id,
