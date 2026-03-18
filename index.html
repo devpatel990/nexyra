@@ -2191,26 +2191,27 @@
 
         function getFallbackArtists() {
             const fallbackArtists = [
-                { id: '1', name: 'Drake', images: [{ url: 'https://i.scdn.co/image/ab6761610000e5eb7c8a13d717c3b0d9c78286a2' }] },
-                { id: '2', name: 'Taylor Swift', images: [{ url: 'https://i.scdn.co/image/ab6761610000e5eb7c8a13d717c3b0d9c78286a2' }] },
-                { id: '3', name: 'The Weeknd', images: [{ url: 'https://i.scdn.co/image/ab6761610000e5eb7c8a13d717c3b0d9c78286a2' }] },
-                { id: '4', name: 'Bad Bunny', images: [{ url: 'https://i.scdn.co/image/ab6761610000e5eb7c8a13d717c3b0d9c78286a2' }] },
-                { id: '5', name: 'Ed Sheeran', images: [{ url: 'https://i.scdn.co/image/ab6761610000e5eb7c8a13d717c3b0d9c78286a2' }] },
-                { id: '6', name: 'Dua Lipa', images: [{ url: 'https://i.scdn.co/image/ab6761610000e5eb7c8a13d717c3b0d9c78286a2' }] }
+                { id: '1', name: 'Drake', images: [{ url: 'https://placehold.co/300x300/7c3aed/ffffff?text=Drake' }] },
+                { id: '2', name: 'Taylor Swift', images: [{ url: 'https://placehold.co/300x300/a855f7/ffffff?text=Taylor+Swift' }] },
+                { id: '3', name: 'The Weeknd', images: [{ url: 'https://placehold.co/300x300/ec4899/ffffff?text=The+Weeknd' }] },
+                { id: '4', name: 'Bad Bunny', images: [{ url: 'https://placehold.co/300x300/10b981/ffffff?text=Bad+Bunny' }] },
+                { id: '5', name: 'Ed Sheeran', images: [{ url: 'https://placehold.co/300x300/f59e0b/ffffff?text=Ed+Sheeran' }] },
+                { id: '6', name: 'Dua Lipa', images: [{ url: 'https://placehold.co/300x300/ef4444/ffffff?text=Dua+Lipa' }] }
             ];
             return fallbackArtists.map(createArtistCard).join('');
         }
 
         function getFallbackTracks() {
+            // Using reliable placeholder images from placeholder.com
             const fallbackTracks = [
-                { id: '1', title: 'Blinding Lights', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b2738863bc11d2aa12b54f5aeb36ab67616d0000b273f57c28e3f52d80ab67616d0000b273e4b4385750f65b1ab67616d0000b27304ecc1a4c9d55d' }, duration: 200, preview: null },
-                { id: '2', title: 'Shape of You', artist: { name: 'Ed Sheeran' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273cd5e9e320731b5ee6c47146ab67616d0000b273b0095a9c4f6c9f8c7b6a5432ab67616d0000b273c4e4f5e5e5e5e5e5e5' }, duration: 233, preview: null },
-                { id: '3', title: 'As It Was', artist: { name: 'Harry Styles' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273fa01f5f5c2e3c3b2e3c3b2e3ab67616d0000b2731234567890abcdef123456ab67616d0000b273abcdef1234567890' }, duration: 167, preview: null },
-                { id: '4', title: 'Heat Waves', artist: { name: 'Glass Animals' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbccccccccccccccc' }, duration: 239, preview: null },
-                { id: '5', title: 'Flowers', artist: { name: 'Miley Cyrus' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273ddddddddddddddddeeeeeeeeeeeeeeeffffffffffffff' }, duration: 200, preview: null },
-                { id: '6', title: 'Anti-Hero', artist: { name: 'Taylor Swift' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273ggggggggggggggghhhhhhhhhhhhhhhiiiiiiiiiiiiii' }, duration: 200, preview: null },
-                { id: '7', title: 'Creepin\'', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273jjjjjjjjjjjjjjjkkkkkkkkkkkkkkk' }, duration: 222, preview: null },
-                { id: '8', title: 'Rich Flex', artist: { name: 'Drake & 21 Savage' }, album: { cover_medium: 'https://mosaic.scdn.co/300/ab67616d0000b273llllllllllllmmmnnnoooooopppppppp' }, duration: 238, preview: null }
+                { id: '1', title: 'Blinding Lights', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights' }, duration: 200, preview: null },
+                { id: '2', title: 'Shape of You', artist: { name: 'Ed Sheeran' }, album: { cover_medium: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You' }, duration: 233, preview: null },
+                { id: '3', title: 'As It Was', artist: { name: 'Harry Styles' }, album: { cover_medium: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was' }, duration: 167, preview: null },
+                { id: '4', title: 'Heat Waves', artist: { name: 'Glass Animals' }, album: { cover_medium: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves' }, duration: 239, preview: null },
+                { id: '5', title: 'Flowers', artist: { name: 'Miley Cyrus' }, album: { cover_medium: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers' }, duration: 200, preview: null },
+                { id: '6', title: 'Anti-Hero', artist: { name: 'Taylor Swift' }, album: { cover_medium: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero' }, duration: 200, preview: null },
+                { id: '7', title: 'Creepin\'', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/8b5cf6/ffffff?text=Creepin' }, duration: 222, preview: null },
+                { id: '8', title: 'Rich Flex', artist: { name: 'Drake & 21' }, album: { cover_medium: 'https://placehold.co/300x300/6366f1/ffffff?text=Rich+Flex' }, duration: 238, preview: null }
             ];
             return fallbackTracks.map((t, i) => createTrackCard({
                 id: t.id,
@@ -2224,10 +2225,10 @@
 
         function getFallbackPlaylists() {
             const fallbackPlaylists = [
-                { name: "Today's Top Hits", description: 'The hottest tracks right now', images: [{ url: 'https://mosaic.scdn.co/300/ab67616d0000b2738863bc11d2aa12b54f5aeb36ab67616d0000b273f57c28e3f52d80ab67616d0000b273e4b4385750f65b1ab67616d0000b27304ecc1a4c9d55d' }] },
-                { name: 'RapCaviar', description: 'New music from Drake, Travis Scott and more', images: [{ url: 'https://mosaic.scdn.co/300/ab67616d0000b273cd5e9e320731b5ee6c47146ab67616d0000b273b0095a9c4f6c9f8c7b6a5432ab67616d0000b273c4e4f5e5e5e5e5e5e5' }] },
-                { name: 'All Out 2010s', description: 'The biggest songs of the 2010s', images: [{ url: 'https://mosaic.scdn.co/300/ab67616d0000b273fa01f5f5c2e3c3b2e3c3b2e3ab67616d0000b2731234567890abcdef123456ab67616d0000b273abcdef1234567890' }] },
-                { name: 'Rock Classics', description: 'Rock legends & iconic songs', images: [{ url: 'https://mosaic.scdn.co/300/ab67616d0000b273aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbccccccccccccccc' }] }
+                { name: "Today's Top Hits", description: 'The hottest tracks right now', images: [{ url: 'https://placehold.co/300x300/7c3aed/ffffff?text=Top+Hits' }] },
+                { name: 'RapCaviar', description: 'New music from Drake, Travis', images: [{ url: 'https://placehold.co/300x300/a855f7/ffffff?text=RapCaviar' }] },
+                { name: 'All Out 2010s', description: 'The biggest songs of the 2010s', images: [{ url: 'https://placehold.co/300x300/ec4899/ffffff?text=2010s' }] },
+                { name: 'Rock Classics', description: 'Rock legends & iconic songs', images: [{ url: 'https://placehold.co/300x300/10b981/ffffff?text=Rock' }] }
             ];
             return fallbackPlaylists.map(createPlaylistCard).join('');
         }
