@@ -2559,7 +2559,7 @@
         const DeezerAPI = {
             async search(query) {
                 try {
-                    const response = await fetch(`${encodeURIComponent(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=10`)}`);
+                    const response = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=10`);
                     const data = await response.json();
                     console.log('Deezer search response:', data);
                     return data;
@@ -2571,7 +2571,7 @@
 
             async getChart() {
                 try {
-                    const response = await fetch(`${encodeURIComponent('https://api.deezer.com/chart/0/tracks?limit=12')}`);
+                    const response = await fetch('https://api.deezer.com/chart/0/tracks?limit=12');
                     const data = await response.json();
                     console.log('Deezer chart response:', data);
                     if (data.data) {
@@ -2588,7 +2588,7 @@
 
             async getArtistTop(artistId) {
                 try {
-                    const response = await fetch(`${encodeURIComponent(`https://api.deezer.com/artist/${artistId}/top?limit=10`)}`);
+                    const response = await fetch(`https://api.deezer.com/artist/${artistId}/top?limit=10`);
                     return await response.json();
                 } catch (e) {
                     console.error('Deezer artist top error:', e);
@@ -3160,7 +3160,7 @@
             
             for (const query of popularSongs) {
                 try {
-                    const response = await fetch(`${encodeURIComponent(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=1`)}`);
+                    const response = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=1`);
                     const data = await response.json();
                     if (data.data && data.data.length > 0) {
                         const track = data.data[0];
@@ -3620,6 +3620,8 @@
             
             if (termsAccepted === 'true') {
                 consentOverlay.style.display = 'none';
+                // Initialize app for returning users
+                initializeApp();
                 if (cookiesAccepted !== 'true') {
                     setTimeout(() => {
                         cookieBanner.classList.add('active');
@@ -3751,7 +3753,7 @@
         async function testDeezerAPI() {
             console.log('=== Testing Deezer API ===');
             try {
-                const response = await fetch(`${encodeURIComponent('https://api.deezer.com/search?q=heat+waves&limit=1')}`);
+                const response = await fetch('https://api.deezer.com/search?q=heat+waves&limit=1');
                 const data = await response.json();
                 console.log('Deezer API Test - Heat Waves:', data);
                 if (data.data && data.data.length > 0) {
