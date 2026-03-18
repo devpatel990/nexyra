@@ -146,17 +146,18 @@
         .consent-panels {
             flex: 1;
             overflow: hidden;
+            position: relative;
         }
         
         .consent-panel {
-            display: none;
+            display: block;
             height: 100%;
             overflow-y: auto;
             padding-right: 12px;
         }
         
-        .consent-panel.active {
-            display: block;
+        .consent-panel.privacy-hidden {
+            display: none;
         }
         
         .consent-panel h2 {
@@ -2003,7 +2004,7 @@
                 </div>
                 
                 <div class="consent-panels">
-                    <div class="consent-panel active" id="termsPanel">
+                    <div class="consent-panel" id="termsPanel">
                         <h2>Terms of Service</h2>
                         <div class="consent-text">
                             <h3>1. Acceptance of Terms</h3>
@@ -2035,7 +2036,7 @@
                         </div>
                     </div>
                     
-                    <div class="consent-panel" id="privacyPanel">
+                    <div class="consent-panel privacy-hidden" id="privacyPanel">
                         <h2>Privacy Policy</h2>
                         <div class="consent-text">
                             <h3>1. Information We Collect</h3>
@@ -3645,11 +3646,21 @@
                 tab.addEventListener('click', () => {
                     const tabName = tab.dataset.tab;
                     
+                    // Update tab styles
                     consentTabs.forEach(t => t.classList.remove('active'));
-                    consentPanels.forEach(p => p.classList.remove('active'));
-                    
                     tab.classList.add('active');
-                    document.getElementById(`${tabName}Panel`).classList.add('active');
+                    
+                    // Show/hide panels
+                    const termsPanel = document.getElementById('termsPanel');
+                    const privacyPanel = document.getElementById('privacyPanel');
+                    
+                    if (tabName === 'terms') {
+                        termsPanel.classList.remove('privacy-hidden');
+                        privacyPanel.classList.add('privacy-hidden');
+                    } else {
+                        termsPanel.classList.add('privacy-hidden');
+                        privacyPanel.classList.remove('privacy-hidden');
+                    }
                 });
             });
             
@@ -3697,40 +3708,42 @@
         // Footer functions
         function showTerms() {
             const consentOverlay = document.getElementById('consentOverlay');
-            const consentTabs = document.querySelectorAll('.consent-tab');
-            const consentPanels = document.querySelectorAll('.consent-panel');
+            const termsPanel = document.getElementById('termsPanel');
+            const privacyPanel = document.getElementById('privacyPanel');
+            const termsTab = document.querySelector('[data-tab="terms"]');
+            const privacyTab = document.querySelector('[data-tab="privacy"]');
             
-            consentTabs.forEach(t => t.classList.remove('active'));
-            consentPanels.forEach(p => p.classList.remove('active'));
+            // Switch to terms tab
+            termsTab.classList.add('active');
+            privacyTab.classList.remove('active');
             
-            document.querySelector('[data-tab="terms"]').classList.add('active');
-            document.getElementById('termsPanel').classList.add('active');
+            // Show terms, hide privacy
+            termsPanel.classList.remove('privacy-hidden');
+            privacyPanel.classList.add('privacy-hidden');
+            
             consentOverlay.style.display = 'flex';
         }
         
         function showPrivacy() {
             const consentOverlay = document.getElementById('consentOverlay');
-            const consentTabs = document.querySelectorAll('.consent-tab');
-            const consentPanels = document.querySelectorAll('.consent-panel');
+            const termsPanel = document.getElementById('termsPanel');
+            const privacyPanel = document.getElementById('privacyPanel');
+            const termsTab = document.querySelector('[data-tab="terms"]');
+            const privacyTab = document.querySelector('[data-tab="privacy"]');
             
-            consentTabs.forEach(t => t.classList.remove('active'));
-            consentPanels.forEach(p => p.classList.remove('active'));
+            // Switch to privacy tab
+            privacyTab.classList.add('active');
+            termsTab.classList.remove('active');
             
-            document.querySelector('[data-tab="privacy"]').classList.add('active');
-            document.getElementById('privacyPanel').classList.add('active');
+            // Show privacy, hide terms
+            privacyPanel.classList.remove('privacy-hidden');
+            termsPanel.classList.add('privacy-hidden');
+            
             consentOverlay.style.display = 'flex';
         }
         
         function showCookies() {
-            const consentOverlay = document.getElementById('consentOverlay');
-            const consentTabs = document.querySelectorAll('.consent-tab');
-            const consentPanels = document.querySelectorAll('.consent-panel');
-            
-            consentTabs.forEach(t => t.classList.remove('active'));
-            consentPanels.forEach(p => p.classList.remove('active'));
-            
-            document.querySelector('[data-tab="privacy"]').classList.add('active');
-            document.getElementById('privacyPanel').classList.add('active');
+            showPrivacy();
             
             // Scroll to cookies section
             setTimeout(() => {
@@ -3740,8 +3753,6 @@
                     cookiesSection.scrollIntoView({ behavior: 'smooth' });
                 }
             }, 100);
-            
-            consentOverlay.style.display = 'flex';
         }
         
         function initializeApp() {
