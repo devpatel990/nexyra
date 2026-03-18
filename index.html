@@ -37,6 +37,411 @@
             --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
             --shadow-glow: 0 0 60px rgba(124, 58, 237, 0.3);
         }
+        
+        /* Consent Modal Styles */
+        .consent-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .consent-modal {
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            background: var(--bg-elevated);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.6s ease;
+        }
+        
+        .consent-header {
+            padding: 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(168, 85, 247, 0.05));
+        }
+        
+        .consent-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .consent-logo h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .consent-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+        
+        .consent-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 24px;
+        }
+        
+        .consent-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .consent-tab {
+            flex: 1;
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .consent-tab.active {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .consent-tab:hover:not(.active) {
+            background: var(--glass-hover);
+            color: var(--text-primary);
+        }
+        
+        .consent-panels {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .consent-panel {
+            display: none;
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 12px;
+        }
+        
+        .consent-panel.active {
+            display: block;
+        }
+        
+        .consent-panel h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .consent-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .consent-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 24px 0 12px 0;
+        }
+        
+        .consent-text p {
+            margin-bottom: 12px;
+        }
+        
+        .consent-text ul, .consent-text ol {
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .consent-text li {
+            margin-bottom: 8px;
+        }
+        
+        .consent-footer {
+            padding: 24px 32px;
+            border-top: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+        }
+        
+        .consent-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .consent-checkbox input {
+            display: none;
+        }
+        
+        .consent-checkbox .checkmark {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border: 2px solid var(--glass-border);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .consent-checkbox input:checked + .checkmark {
+            background: var(--accent-gradient);
+            border-color: transparent;
+        }
+        
+        .consent-checkbox input:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .consent-checkbox-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .consent-checkbox-text strong {
+            color: var(--text-primary);
+        }
+        
+        .consent-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        
+        .consent-btn {
+            padding: 12px 32px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .consent-btn-decline {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+        
+        .consent-btn-decline:hover {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--error);
+            color: var(--error);
+        }
+        
+        .consent-btn-accept {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .consent-btn-accept:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .consent-btn-accept:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.5);
+        }
+        
+        /* Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--glass-border);
+            padding: 20px;
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cookie-banner.active {
+            transform: translateY(0);
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .cookie-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .cookie-text p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        
+        .cookie-btn {
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cookie-btn-learn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+        
+        .cookie-btn-learn:hover {
+            background: var(--glass-hover);
+            color: var(--text-primary);
+        }
+        
+        .cookie-btn-accept {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+        }
+        
+        .cookie-btn-accept:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Consent Modal */
+        @media (max-width: 768px) {
+            .consent-modal {
+                max-height: 95vh;
+            }
+            
+            .consent-header {
+                padding: 24px;
+            }
+            
+            .consent-logo h1 {
+                font-size: 28px;
+            }
+            
+            .consent-content {
+                padding: 16px;
+            }
+            
+            .consent-tabs {
+                flex-direction: column;
+            }
+            
+            .consent-footer {
+                padding: 20px;
+            }
+            
+            .consent-buttons {
+                flex-direction: column;
+            }
+            
+            .consent-btn {
+                width: 100%;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .cookie-btn {
+                width: 100%;
+            }
+        }
 
         * {
             margin: 0;
@@ -702,6 +1107,32 @@
             color: var(--text-muted);
             margin-top: 8px;
         }
+        
+        .track-card-actions {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .track-youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 4px;
+            color: #ff0000;
+            font-size: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .track-youtube-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
 
         /* Playlist Card */
         .playlist-card {
@@ -934,6 +1365,32 @@
 
         .progress-bar:hover .progress-bar-fill::after {
             opacity: 1;
+        }
+        
+        .youtube-link-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 8px;
+        }
+        
+        .youtube-music-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 20px;
+            color: #ff0000;
+            font-size: 11px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .youtube-music-link:hover {
+            background: rgba(255, 0, 0, 0.25);
+            transform: scale(1.05);
         }
 
         .mini-player-volume {
@@ -1240,6 +1697,33 @@
             transform: scale(1.05);
             box-shadow: var(--shadow-glow);
         }
+        
+        .fullscreen-youtube-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        
+        .youtube-music-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(255, 0, 0, 0.15);
+            border: 2px solid rgba(255, 0, 0, 0.4);
+            border-radius: 30px;
+            color: #ff0000;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .youtube-music-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
 
         /* Empty State */
         .empty-state {
@@ -1351,6 +1835,166 @@
     </style>
 </head>
 <body>
+    <!-- Consent Modal -->
+    <div class="consent-overlay" id="consentOverlay">
+        <div class="consent-modal">
+            <div class="consent-header">
+                <div class="consent-logo">
+                    <svg width="48" height="48" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7c3aed"/>
+                                <stop offset="50%" style="stop-color:#a855f7"/>
+                                <stop offset="100%" style="stop-color:#ec4899"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="url(#logoGrad)"/>
+                        <path d="M40 35 L40 65 L70 50 Z" fill="white"/>
+                    </svg>
+                    <h1>Nexyra</h1>
+                </div>
+                <p class="consent-subtitle">Welcome! Please review and accept our policies to continue.</p>
+            </div>
+            
+            <div class="consent-content">
+                <div class="consent-tabs">
+                    <button class="consent-tab active" data-tab="terms">Terms of Service</button>
+                    <button class="consent-tab" data-tab="privacy">Privacy Policy</button>
+                </div>
+                
+                <div class="consent-panels">
+                    <div class="consent-panel active" id="termsPanel">
+                        <h2>Terms of Service</h2>
+                        <div class="consent-text">
+                            <h3>1. Acceptance of Terms</h3>
+                            <p>By accessing and using Nexyra ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this Service.</p>
+                            
+                            <h3>2. Description of Service</h3>
+                            <p>Nexyra is a music streaming interface that provides access to streaming preview content from third-party services including Deezer and Spotify. The actual music streaming is provided by these third-party providers under their respective terms.</p>
+                            
+                            <h3>3. User Responsibilities</h3>
+                            <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You are responsible for maintaining the confidentiality of any account credentials and for all activities that occur under your account.</p>
+                            
+                            <h3>4. Intellectual Property</h3>
+                            <p>The Service and its original content, features, and functionality are owned by Nexyra and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+                            
+                            <h3>5. Third-Party Links</h3>
+                            <p>The Service may contain links to third-party websites or services that are not owned or controlled by Nexyra. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party websites or services.</p>
+                            
+                            <h3>6. Limitation of Liability</h3>
+                            <p>In no event shall Nexyra, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
+                            
+                            <h3>7. Changes to Terms</h3>
+                            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide notice of any significant changes by posting the new Terms on this page.</p>
+                            
+                            <h3>8. Governing Law</h3>
+                            <p>These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which the service provider operates, without regard to its conflict of law provisions.</p>
+                            
+                            <h3>9. Contact Information</h3>
+                            <p>If you have any questions about these Terms, please contact us at devpatel43@gmail.com.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="consent-panel" id="privacyPanel">
+                        <h2>Privacy Policy</h2>
+                        <div class="consent-text">
+                            <h3>1. Information We Collect</h3>
+                            <p><strong>Automatically Collected Information:</strong> When you visit our Service, we automatically collect certain information about your device, including your IP address, browser type, operating system, referring URLs, and other technical information.</p>
+                            <p><strong>Usage Data:</strong> We may collect information about how you access and use the Service, including your listening history, search queries, preferences, and interaction patterns.</p>
+                            
+                            <h3>2. How We Use Your Information</h3>
+                            <p>We use the information we collect to:</p>
+                            <ul>
+                                <li>Provide, maintain, and improve our Service</li>
+                                <li>Track your usage patterns and preferences</li>
+                                <li>Store your volume and playback settings</li>
+                                <li>Understand how users interact with our Service</li>
+                                <li>Detect, prevent, and address technical issues</li>
+                            </ul>
+                            
+                            <h3>3. Cookies and Tracking Technologies</h3>
+                            <p>We use cookies and similar tracking technologies to track activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier.</p>
+                            <p><strong>Types of Cookies We Use:</strong></p>
+                            <ul>
+                                <li><strong>Essential Cookies:</strong> Required for the Service to function properly</li>
+                                <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+                                <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our Service</li>
+                            </ul>
+                            
+                            <h3>4. Data Storage</h3>
+                            <p>We store data locally in your browser using localStorage. This includes:</p>
+                            <ul>
+                                <li>Volume preferences</li>
+                                <li>Cookie consent status</li>
+                                <li>Terms acceptance status</li>
+                                <li>Playback history (in some cases)</li>
+                            </ul>
+                            
+                            <h3>5. Third-Party Services</h3>
+                            <p>Our Service uses third-party services that may collect their own data:</p>
+                            <ul>
+                                <li><strong>Deezer API:</strong> Music streaming previews and metadata</li>
+                                <li><strong>Spotify Web API:</strong> Artist and playlist information</li>
+                                <li><strong>YouTube Music:</strong> External links for full song playback</li>
+                            </ul>
+                            
+                            <h3>6. Data Security</h3>
+                            <p>The security of your data is important to us. We strive to use commercially acceptable means to protect your personal data, but no method of internet transmission or electronic storage is 100% secure.</p>
+                            
+                            <h3>7. Your Rights</h3>
+                            <p>You have the right to:</p>
+                            <ul>
+                                <li>Know what data we collect</li>
+                                <li>Delete your local data by clearing browser storage</li>
+                                <li>Opt-out of non-essential cookies</li>
+                                <li>Contact us with privacy concerns</li>
+                            </ul>
+                            
+                            <h3>8. Children's Privacy</h3>
+                            <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+                            
+                            <h3>9. Changes to Privacy Policy</h3>
+                            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "last updated" date.</p>
+                            
+                            <h3>10. Contact Us</h3>
+                            <p>If you have any questions about this Privacy Policy, please contact us at devpatel43@gmail.com.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="consent-footer">
+                <label class="consent-checkbox">
+                    <input type="checkbox" id="consentCheckbox">
+                    <span class="checkmark"></span>
+                    <span class="consent-checkbox-text">I have read and agree to the <strong>Terms of Service</strong> and <strong>Privacy Policy</strong></span>
+                </label>
+                
+                <div class="consent-buttons">
+                    <button class="consent-btn consent-btn-decline" id="declineBtn">Decline</button>
+                    <button class="consent-btn consent-btn-accept" id="acceptBtn" disabled>Agree and Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-icon">
+                <i data-lucide="cookie" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div class="cookie-text">
+                <h3>We value your privacy</h3>
+                <p>We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept Cookies", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-learn" id="learnMoreBtn">Learn More</button>
+                <button class="cookie-btn cookie-btn-accept" id="acceptCookiesBtn">Accept Cookies</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <svg class="loading-logo" width="100" height="100" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1521,6 +2165,15 @@
                 </div>
                 <span class="mini-player-time" id="duration">0:00</span>
             </div>
+            
+            <div class="youtube-link-container">
+                <a href="#" target="_blank" class="youtube-music-link" id="youtubeMusicLink">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    Listen on YouTube Music
+                </a>
+            </div>
 
             <div class="mini-player-volume">
                 <button class="mini-player-btn" id="volumeBtn">
@@ -1582,6 +2235,15 @@
                     <div class="volume-slider-fill" id="fullscreenVolumeFill" style="width: 70%"></div>
                 </div>
             </div>
+            
+            <div class="fullscreen-youtube-link">
+                <a href="#" target="_blank" class="youtube-music-btn" id="fullscreenYoutubeLink">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    Listen Full Song on YouTube Music
+                </a>
+            </div>
         </div>
     </div>
 
@@ -1606,31 +2268,48 @@
                 }
                 
                 const credentials = btoa(`${this.clientId}:${this.clientSecret}`);
-                const response = await fetch('https://accounts.spotify.com/api/token', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Basic ${credentials}`
-                    },
-                    body: 'grant_type=client_credentials'
-                });
                 
-                if (!response.ok) {
-                    const error = await response.json();
-                    console.error('Spotify token error:', error);
-                    throw new Error('Failed to get access token');
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 5000);
+                    
+                    const response = await fetch('https://accounts.spotify.com/api/token', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'Authorization': `Basic ${credentials}`
+                        },
+                        body: 'grant_type=client_credentials',
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) {
+                        const error = await response.json().catch(() => ({}));
+                        console.error('Spotify token error:', response.status, error);
+                        return null;
+                    }
+                    
+                    const data = await response.json();
+                    this.accessToken = data.access_token;
+                    this.tokenExpiry = Date.now() + (data.expires_in * 1000) - 60000;
+                    console.log('Spotify token obtained successfully');
+                    return this.accessToken;
+                } catch (e) {
+                    console.error('Spotify token fetch error:', e.message);
+                    return null;
                 }
-                
-                const data = await response.json();
-                this.accessToken = data.access_token;
-                this.tokenExpiry = Date.now() + (data.expires_in * 1000) - 60000;
-                console.log('Spotify token obtained successfully');
-                return this.accessToken;
             },
 
-            async fetchWithAuth(url) {
+            async fetchWithAuth(url, retryCount = 0) {
+                const maxRetries = 2;
+                
                 if (!this.accessToken) {
-                    await this.getAccessToken();
+                    const token = await this.getAccessToken();
+                    if (!token) {
+                        throw new Error('Spotify authentication failed');
+                    }
                 }
                 
                 const response = await fetch(url, {
@@ -1639,9 +2318,9 @@
                     }
                 });
                 
-                if (response.status === 401) {
-                    await this.getAccessToken();
-                    return this.fetchWithAuth(url);
+                if (response.status === 401 && retryCount < maxRetries) {
+                    this.accessToken = null;
+                    return this.fetchWithAuth(url, retryCount + 1);
                 }
                 
                 return response.json();
@@ -1706,8 +2385,10 @@
         const DeezerAPI = {
             async search(query) {
                 try {
-                    const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=10`)}`);
-                    return await response.json();
+                    const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=10`)}`);
+                    const data = await response.json();
+                    console.log('Deezer search response:', data);
+                    return data;
                 } catch (e) {
                     console.error('Deezer search error:', e);
                     return { data: [] };
@@ -1716,8 +2397,15 @@
 
             async getChart() {
                 try {
-                    const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://api.deezer.com/chart/0/tracks?limit=12'));
-                    return await response.json();
+                    const response = await fetch(`https://corsproxy.io/?${encodeURIComponent('https://api.deezer.com/chart/0/tracks?limit=12')}`);
+                    const data = await response.json();
+                    console.log('Deezer chart response:', data);
+                    if (data.data) {
+                        data.data.forEach((track, i) => {
+                            console.log(`Track ${i + 1}: ${track.title} - Preview: ${track.preview ? 'YES' : 'NO'}`);
+                        });
+                    }
+                    return data;
                 } catch (e) {
                     console.error('Deezer chart error:', e);
                     return { data: [] };
@@ -1726,7 +2414,7 @@
 
             async getArtistTop(artistId) {
                 try {
-                    const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.deezer.com/artist/${artistId}/top?limit=10`)}`);
+                    const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://api.deezer.com/artist/${artistId}/top?limit=10`)}`);
                     return await response.json();
                 } catch (e) {
                     console.error('Deezer artist top error:', e);
@@ -1745,7 +2433,8 @@
             audio: null,
             volume: parseFloat(localStorage.getItem('nexyra_volume')) || 0.7,
             queue: [],
-            currentIndex: 0
+            currentIndex: 0,
+            playPromise: null
         };
 
         // ==========================================
@@ -1793,10 +2482,10 @@
         }
 
         function createArtistCard(artist) {
-            const image = artist.images?.[0]?.url || 'https://via.placeholder.com/300x300?text=Artist';
+            const image = artist.images?.[0]?.url || artist.image || 'https://placehold.co/300x300/7c3aed/ffffff?text=Artist';
             return `
                 <div class="artist-card" data-artist-id="${artist.id}">
-                    <img src="${image}" alt="${artist.name}" class="artist-card-img" loading="lazy">
+                    <img src="${image}" alt="${artist.name}" class="artist-card-img" loading="lazy" onerror="this.src='https://placehold.co/300x300/7c3aed/ffffff?text=${encodeURIComponent(artist.name || 'Artist')}'">
                     <div class="artist-card-name">${artist.name}</div>
                     <div class="artist-card-type">Artist</div>
                 </div>
@@ -1804,16 +2493,28 @@
         }
 
         function createTrackCard(track, index) {
-            const image = track.album?.images?.[0]?.url || track.album?.cover_medium || 'https://via.placeholder.com/300x300?text=Track';
-            const name = track.name || track.title;
+            const trackId = String(track.id || index);
+            const image = track.album?.images?.[0]?.url || track.album?.cover_medium || track.cover_medium || 'https://placehold.co/300x300/7c3aed/ffffff?text=Track';
+            const name = track.name || track.title || 'Unknown Track';
             const artist = track.artists?.[0]?.name || track.artist?.name || 'Unknown Artist';
-            const duration = track.duration_ms || track.duration * 1000;
-            const preview = track.preview || null;
-            const isPlaying = state.currentTrack?.id === track.id && state.isPlaying;
+            const duration = track.duration_ms || (track.duration ? track.duration * 1000 : 0);
+            const preview = track.preview || track.preview_url || null;
+            const youtubeUrl = track.youtubeUrl || track.link || `https://music.youtube.com/search?q=${encodeURIComponent(name + ' ' + artist)}`;
+            const isPlaying = state.currentTrack?.id === trackId && state.isPlaying;
+            
+            const trackData = {
+                id: trackId,
+                name: name,
+                artist: artist,
+                image: image,
+                preview: preview,
+                duration: duration,
+                youtubeUrl: youtubeUrl
+            };
             
             return `
-                <div class="track-card ${isPlaying ? 'playing' : ''}" data-track='${JSON.stringify({id: track.id, name, artist, image, preview, duration})}'>
-                    <img src="${image}" alt="${name}" class="track-card-img" loading="lazy">
+                <div class="track-card ${isPlaying ? 'playing' : ''}" data-track-id="${trackId}" data-track='${JSON.stringify(trackData)}'>
+                    <img src="${image}" alt="${name}" class="track-card-img" loading="lazy" onerror="this.src='https://placehold.co/300x300/7c3aed/ffffff?text=${encodeURIComponent(name)}'">
                     <div class="track-card-play">
                         ${isPlaying ? `
                             <div class="equalizer">
@@ -1827,6 +2528,14 @@
                     </div>
                     <div class="track-card-name">${name}</div>
                     <div class="track-card-artist">${artist}</div>
+                    <div class="track-card-actions">
+                        <a href="${youtubeUrl}" target="_blank" class="track-youtube-btn" title="Listen on YouTube Music">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                            YouTube
+                        </a>
+                    </div>
                     <div class="track-card-duration">${formatDuration(duration / 1000)}</div>
                 </div>
             `;
@@ -1873,19 +2582,19 @@
             });
             
             state.audio.addEventListener('ended', () => {
-                playNext();
-            });
-            
-            state.audio.addEventListener('play', () => {
-                state.isPlaying = true;
+                state.isPlaying = false;
                 updatePlayButton();
-                lucide.createIcons();
+                playNext();
             });
             
             state.audio.addEventListener('pause', () => {
                 state.isPlaying = false;
                 updatePlayButton();
                 lucide.createIcons();
+            });
+            
+            state.audio.addEventListener('error', (e) => {
+                console.error('Audio error:', e);
             });
             
             // Volume slider
@@ -1896,46 +2605,137 @@
         }
 
         function playTrack(track) {
+            console.log('=== PLAY TRACK CALLED ===');
+            console.log('Track:', JSON.stringify(track, null, 2));
+            
+            if (!track) {
+                console.error('playTrack called with null/undefined track');
+                return;
+            }
+            
             if (!track.preview) {
-                console.log('No preview URL for track:', track);
+                console.log('No preview URL for track:', track.name || track.title);
                 alert('Preview not available for this track');
                 return;
             }
             
-            console.log('Playing track:', track.name, 'Preview URL:', track.preview);
+            // Stop any currently playing audio first
+            if (state.audio) {
+                state.audio.pause();
+                state.audio.src = '';
+            }
             
+            // Cancel any pending play promises
+            if (state.playPromise) {
+                state.playPromise.cancel = true;
+                state.playPromise = null;
+            }
+            
+            // Update state with new track
             state.currentTrack = track;
-            state.audio.src = track.preview;
+            state.isPlaying = true;
             
-            state.audio.play().then(() => {
-                console.log('Audio started playing');
-                showMiniPlayer();
-                updateMiniPlayerUI();
+            // Set audio source and play
+            state.audio.src = track.preview;
+            console.log('Setting audio src to:', track.preview);
+            
+            // Update UI
+            showMiniPlayer();
+            updateMiniPlayerUI();
+            updateAllTrackCards();
+            
+            const playPromise = state.audio.play();
+            state.playPromise = playPromise;
+            
+            playPromise.then(() => {
+                console.log('Audio playback started successfully');
+                state.isPlaying = true;
+                updatePlayButton();
             }).catch(err => {
-                console.error('Error playing audio:', err);
-                alert('Could not play audio: ' + err.message);
+                console.error('Audio playback error:', err);
+                state.isPlaying = false;
+                updatePlayButton();
+                if (err.name !== 'AbortError') {
+                    alert('Could not play audio: ' + err.message);
+                }
             });
+        }
+
+        function updateAllTrackCards() {
+            const cards = document.querySelectorAll('.track-card');
+            cards.forEach(card => {
+                const trackId = card.dataset.trackId;
+                const isCurrentTrack = state.currentTrack && String(state.currentTrack.id) === String(trackId);
+                
+                if (isCurrentTrack) {
+                    card.classList.add('playing');
+                    const playBtn = card.querySelector('.track-card-play');
+                    if (playBtn && state.isPlaying) {
+                        playBtn.innerHTML = `
+                            <div class="equalizer">
+                                <div class="equalizer-bar"></div>
+                                <div class="equalizer-bar"></div>
+                                <div class="equalizer-bar"></div>
+                            </div>
+                        `;
+                    }
+                } else {
+                    card.classList.remove('playing');
+                    const playBtn = card.querySelector('.track-card-play');
+                    if (playBtn) {
+                        playBtn.innerHTML = '<i data-lucide="play" style="color: white; width: 20px; height: 20px; margin-left: 2px;"></i>';
+                    }
+                }
+            });
+            lucide.createIcons();
         }
 
         function togglePlay() {
             if (!state.currentTrack) return;
             
             if (state.isPlaying) {
+                if (state.playPromise) {
+                    state.playPromise.cancel = true;
+                    state.playPromise = null;
+                }
                 state.audio.pause();
+                state.isPlaying = false;
+                updatePlayButton();
+                updateAllTrackCards();
             } else {
-                state.audio.play();
+                const playPromise = state.audio.play();
+                state.playPromise = playPromise;
+                playPromise.then(() => {
+                    if (!playPromise.cancel) {
+                        state.isPlaying = true;
+                        updatePlayButton();
+                        updateAllTrackCards();
+                    }
+                }).catch(err => {
+                    if (!playPromise.cancel && err.name !== 'AbortError') {
+                        console.error('Error resuming audio:', err);
+                    }
+                });
             }
         }
 
         function playNext() {
-            if (state.queue.length === 0) return;
+            if (state.queue.length === 0) {
+                state.isPlaying = false;
+                updatePlayButton();
+                return;
+            }
             
             state.currentIndex = (state.currentIndex + 1) % state.queue.length;
             playTrack(state.queue[state.currentIndex]);
         }
 
         function playPrev() {
-            if (state.queue.length === 0) return;
+            if (state.queue.length === 0) {
+                state.isPlaying = false;
+                updatePlayButton();
+                return;
+            }
             
             state.currentIndex = (state.currentIndex - 1 + state.queue.length) % state.queue.length;
             playTrack(state.queue[state.currentIndex]);
@@ -1960,15 +2760,30 @@
         function updateMiniPlayerUI() {
             if (!state.currentTrack) return;
             
-            // Update mini player
-            document.getElementById('playerImg').src = state.currentTrack.image;
+            const playerImg = document.getElementById('playerImg');
+            const fullscreenImg = document.getElementById('fullscreenImg');
+            
+            playerImg.src = state.currentTrack.image;
+            playerImg.onerror = function() { this.src = 'https://placehold.co/100x100/7c3aed/ffffff?text=♪'; };
+            
+            fullscreenImg.src = state.currentTrack.image;
+            fullscreenImg.onerror = function() { this.src = 'https://placehold.co/400x400/7c3aed/ffffff?text=♪'; };
+            
             document.getElementById('playerName').textContent = state.currentTrack.name;
             document.getElementById('playerArtist').textContent = state.currentTrack.artist;
-            
-            // Update fullscreen player
-            document.getElementById('fullscreenImg').src = state.currentTrack.image;
             document.getElementById('fullscreenName').textContent = state.currentTrack.name;
             document.getElementById('fullscreenArtist').textContent = state.currentTrack.artist;
+            
+            // Update YouTube Music link
+            const youtubeLink = document.getElementById('youtubeMusicLink');
+            if (youtubeLink && state.currentTrack.youtubeUrl) {
+                youtubeLink.href = state.currentTrack.youtubeUrl;
+            }
+            
+            const fullscreenYoutubeLink = document.getElementById('fullscreenYoutubeLink');
+            if (fullscreenYoutubeLink && state.currentTrack.youtubeUrl) {
+                fullscreenYoutubeLink.href = state.currentTrack.youtubeUrl;
+            }
         }
 
         function openFullscreenPlayer() {
@@ -2058,9 +2873,20 @@
                     html += `
                         <div class="search-section">
                             <div class="search-section-title">Tracks</div>
-                            ${deezerResults.data.slice(0, 5).map(track => `
-                                <div class="search-item" data-track='${JSON.stringify({id: track.id, name: track.title, artist: track.artist.name, image: track.album?.cover_medium || track.album?.cover, preview: track.preview, duration: track.duration * 1000})}'>
-                                    <img src="${track.album?.cover_medium || track.album?.cover}" alt="${track.title}" class="search-item-img">
+                            ${deezerResults.data.slice(0, 5).map(track => {
+                                const trackId = String(track.id);
+                                const trackData = {
+                                    id: trackId,
+                                    name: track.title,
+                                    artist: track.artist.name,
+                                    image: track.album?.cover_medium || track.album?.cover || '',
+                                    preview: track.preview,
+                                    duration: track.duration ? track.duration * 1000 : 0,
+                                    youtubeUrl: `https://music.youtube.com/search?q=${encodeURIComponent(track.title + ' ' + track.artist.name)}`
+                                };
+                                return `
+                                <div class="search-item" data-track-id="${trackId}" data-track='${JSON.stringify(trackData)}'>
+                                    <img src="${track.album?.cover_medium || track.album?.cover || 'https://placehold.co/44x44/7c3aed/ffffff?text=T'}" alt="${track.title}" class="search-item-img">
                                     <div class="search-item-info">
                                         <div class="search-item-name">${track.title}</div>
                                         <div class="search-item-sub">${track.artist.name}</div>
@@ -2069,7 +2895,7 @@
                                         <i data-lucide="play" style="color: white; width: 16px; height: 16px; margin-left: 2px;"></i>
                                     </div>
                                 </div>
-                            `).join('')}
+                            `}).join('')}
                         </div>
                     `;
                 }
@@ -2085,14 +2911,24 @@
                 resultsContainer.innerHTML = html;
                 lucide.createIcons();
                 
-                // Add click handlers for tracks
+                // Add click handlers for search tracks
                 resultsContainer.querySelectorAll('.search-item[data-track]').forEach(item => {
                     item.addEventListener('click', () => {
-                        const track = JSON.parse(item.dataset.track);
-                        state.queue = [track];
-                        state.currentIndex = 0;
-                        playTrack(track);
-                        resultsContainer.classList.remove('active');
+                        try {
+                            const track = JSON.parse(item.dataset.track);
+                            console.log('=== SEARCH TRACK CLICKED ===');
+                            console.log('Track ID:', track.id);
+                            console.log('Track Name:', track.name);
+                            console.log('Track Preview:', track.preview);
+                            console.log('===========================');
+                            
+                            state.queue = [track];
+                            state.currentIndex = 0;
+                            playTrack(track);
+                            resultsContainer.classList.remove('active');
+                        } catch (err) {
+                            console.error('Error playing search track:', err);
+                        }
                     });
                 });
                 
@@ -2110,6 +2946,72 @@
         // Data Loading
         // ==========================================
         
+        async function loadLocalSongs() {
+            try {
+                const response = await fetch('songs.json');
+                if (response.ok) {
+                    const songs = await response.json();
+                    console.log('Local songs loaded:', songs.length);
+                    if (songs.length > 0) {
+                        return songs.map((song, i) => ({
+                            id: song.id || `local-${i + 1}`,
+                            name: song.name || song.title,
+                            artist: song.artist,
+                            image: song.image || song.cover || '',
+                            preview: song.audio || song.preview,
+                            duration: song.duration || 0,
+                            youtubeUrl: song.youtubeUrl || `https://music.youtube.com/search?q=${encodeURIComponent((song.name || song.title) + ' ' + song.artist)}`
+                        }));
+                    }
+                }
+            } catch (e) {
+                console.log('No local songs.json found');
+            }
+            return [];
+        }
+        
+        async function loadRealSongsFromDeezer() {
+            const popularSongs = [
+                'Heat Waves Glass Animals',
+                'Blinding Lights Weeknd',
+                'Shape of You Ed Sheeran',
+                'As It Was Harry Styles',
+                'Flowers Miley Cyrus',
+                'Anti-Hero Taylor Swift',
+                'Stay The Kid LAROI',
+                'Peaches Justin Bieber'
+            ];
+            
+            const realTracks = [];
+            
+            for (const query of popularSongs) {
+                try {
+                    const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=1`)}`);
+                    const data = await response.json();
+                    if (data.data && data.data.length > 0) {
+                        const track = data.data[0];
+                        if (track.preview) {
+                            realTracks.push({
+                                id: `real-${realTracks.length + 1}`,
+                                name: track.title,
+                                artist: track.artist.name,
+                                image: track.album?.cover_medium || track.album?.cover || '',
+                                preview: track.preview,
+                                duration: track.duration ? track.duration * 1000 : 0,
+                                youtubeUrl: `https://music.youtube.com/watch?v=${track.md5_image || ''}&list=search`
+                            });
+                            console.log('Loaded real song:', track.title, '-', track.artist.name);
+                        }
+                    }
+                } catch (e) {
+                    console.log('Failed to load:', query);
+                }
+                if (realTracks.length >= 8) break;
+            }
+            
+            return realTracks;
+        }
+        
         async function loadInitialData() {
             const artistsContainer = document.getElementById('artistsContainer');
             const tracksContainer = document.getElementById('tracksContainer');
@@ -2120,61 +3022,102 @@
             tracksContainer.innerHTML = Array(8).fill(createSkeletonTrack()).join('');
             playlistsContainer.innerHTML = Array(4).fill(createSkeletonTrack()).join('');
             
+            function hideLoadingScreen() {
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').classList.add('hidden');
+                }, 500);
+            }
+            
             try {
-                // Load data from APIs individually to handle errors better
-                let spotifyArtists = { artists: [] };
-                let spotifyPlaylists = { playlists: { items: [] } };
+                // PRIORITY 1: Load local songs first (user's downloaded music)
+                console.log('Loading local songs...');
+                const localSongs = await loadLocalSongs();
+                
+                if (localSongs.length > 0 && localSongs.some(s => s.preview)) {
+                    console.log('Using local songs:', localSongs.length);
+                    const trackCards = localSongs.map((t, i) => {
+                        return createTrackCard({
+                            id: t.id,
+                            title: t.name,
+                            artist: { name: t.artist },
+                            album: { cover_medium: t.image },
+                            duration: t.duration / 1000,
+                            preview: t.preview
+                        }, i);
+                    });
+                    tracksContainer.innerHTML = trackCards.join('');
+                    state.queue = localSongs.filter(s => s.preview);
+                    
+                    // Use local artists too
+                    const uniqueArtists = [...new Set(localSongs.map(s => s.artist))];
+                    const artistCards = uniqueArtists.slice(0, 6).map((artistName, i) => {
+                        return createArtistCard({
+                            id: `local-artist-${i}`,
+                            name: artistName,
+                            images: [{ url: localSongs.find(s => s.artist === artistName)?.image || '' }]
+                        });
+                    });
+                    artistsContainer.innerHTML = artistCards.join('');
+                    playlistsContainer.innerHTML = getFallbackPlaylists();
+                    
+                    lucide.createIcons();
+                    initScrollAnimations();
+                    hideLoadingScreen();
+                    console.log('Local songs loaded successfully!');
+                    return;
+                }
+                
+                console.log('No local songs found, trying Deezer API...');
+                
+                // PRIORITY 2: Try Deezer API
                 let deezerChart = { data: [] };
-                
-                try {
-                    spotifyArtists = await SpotifyAPI.getTopArtists();
-                } catch (e) {
-                    console.log('Spotify artists failed, using fallback');
-                }
-                
-                try {
-                    spotifyPlaylists = await SpotifyAPI.getFeaturedPlaylists();
-                } catch (e) {
-                    console.log('Spotify playlists failed, using fallback');
-                }
-                
                 try {
                     deezerChart = await DeezerAPI.getChart();
                 } catch (e) {
-                    console.log('Deezer chart failed, using fallback');
+                    console.log('Deezer chart failed');
                 }
                 
-                // Render artists
-                if (spotifyArtists.artists?.length > 0) {
-                    artistsContainer.innerHTML = spotifyArtists.artists.map(createArtistCard).join('');
-                } else {
-                    // Fallback to static data
-                    artistsContainer.innerHTML = getFallbackArtists();
-                }
+                // Render artists (use fallback for now)
+                artistsContainer.innerHTML = getFallbackArtists();
                 
-                // Render tracks from Deezer (has preview)
-                if (deezerChart.data?.length > 0) {
+                // Try Deezer chart first
+                if (deezerChart.data?.length > 0 && deezerChart.data.some(t => t.preview)) {
+                    console.log('Deezer chart loaded, using real songs');
                     tracksContainer.innerHTML = deezerChart.data.map((t, i) => createTrackCard(t, i)).join('');
                     state.queue = deezerChart.data.map(t => ({
-                        id: t.id,
+                        id: String(t.id),
                         name: t.title,
                         artist: t.artist.name,
-                        image: t.album?.cover_medium || t.album?.cover,
+                        image: t.album?.cover_medium || t.album?.cover || '',
                         preview: t.preview,
-                        duration: t.duration * 1000
+                        duration: t.duration ? t.duration * 1000 : 0,
+                        youtubeUrl: `https://music.youtube.com/search?q=${encodeURIComponent(t.title + ' ' + t.artist.name)}`
                     }));
                 } else {
-                    tracksContainer.innerHTML = getFallbackTracks();
-                    // Also populate queue with fallback tracks that have working previews
-                    const fallbackTracks = [
-                        { id: '1', name: 'Blinding Lights', artist: 'The Weeknd', image: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', duration: 200000 },
-                        { id: '2', name: 'Shape of You', artist: 'Ed Sheeran', image: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', duration: 233000 },
-                        { id: '3', name: 'As It Was', artist: 'Harry Styles', image: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', duration: 167000 },
-                        { id: '4', name: 'Heat Waves', artist: 'Glass Animals', image: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', duration: 239000 },
-                        { id: '5', name: 'Flowers', artist: 'Miley Cyrus', image: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', duration: 200000 },
-                        { id: '6', name: 'Anti-Hero', artist: 'Taylor Swift', image: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', duration: 200000 }
-                    ];
-                    state.queue = fallbackTracks;
+                    console.log('Trying to load real songs from Deezer...');
+                    const realTracks = await loadRealSongsFromDeezer();
+                    
+                    if (realTracks.length > 0) {
+                        console.log('Real songs loaded:', realTracks.length);
+                        // Create cards for real tracks
+                        const trackCards = realTracks.map((t, i) => {
+                            return createTrackCard({
+                                id: t.id,
+                                title: t.name,
+                                artist: { name: t.artist },
+                                album: { cover_medium: t.image },
+                                duration: t.duration / 1000,
+                                preview: t.preview,
+                                youtubeUrl: t.youtubeUrl
+                            }, i);
+                        });
+                        tracksContainer.innerHTML = trackCards.join('');
+                        state.queue = realTracks;
+                    } else {
+                        console.log('No real songs from Deezer, using fallback');
+                        tracksContainer.innerHTML = getFallbackTracks();
+                        state.queue = getFallbackQueue();
+                    }
                 }
                 
                 // Render playlists from Spotify
@@ -2186,25 +3129,39 @@
                 
                 lucide.createIcons();
                 initScrollAnimations();
-                
-                // Hide loading screen
-                setTimeout(() => {
-                    document.getElementById('loadingScreen').classList.add('hidden');
-                }, 500);
+                hideLoadingScreen();
                 
             } catch (e) {
                 console.error('Error loading data:', e);
-                // Show fallback content
                 artistsContainer.innerHTML = getFallbackArtists();
-                tracksContainer.innerHTML = getFallbackTracks();
                 playlistsContainer.innerHTML = getFallbackPlaylists();
+                
+                // Try to load real songs from Deezer
+                const realTracks = await loadRealSongsFromDeezer();
+                
+                if (realTracks.length > 0) {
+                    console.log('Real songs loaded in catch:', realTracks.length);
+                    const trackCards = realTracks.map((t, i) => {
+                        return createTrackCard({
+                            id: t.id,
+                            title: t.name,
+                            artist: { name: t.artist },
+                            album: { cover_medium: t.image },
+                            duration: t.duration / 1000,
+                            preview: t.preview
+                        }, i);
+                    });
+                    tracksContainer.innerHTML = trackCards.join('');
+                    state.queue = realTracks;
+                } else {
+                    console.log('Using SoundHelix fallback');
+                    tracksContainer.innerHTML = getFallbackTracks();
+                    state.queue = getFallbackQueue();
+                }
+                
                 lucide.createIcons();
                 initScrollAnimations();
-                
-                // Hide loading screen even on error
-                setTimeout(() => {
-                    document.getElementById('loadingScreen').classList.add('hidden');
-                }, 500);
+                hideLoadingScreen();
             }
         }
 
@@ -2221,16 +3178,15 @@
         }
 
         function getFallbackTracks() {
-            // Free audio samples from various sources
             const fallbackTracks = [
-                { id: '1', title: 'Blinding Lights', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-                { id: '2', title: 'Shape of You', artist: { name: 'Ed Sheeran' }, album: { cover_medium: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You' }, duration: 233, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
-                { id: '3', title: 'As It Was', artist: { name: 'Harry Styles' }, album: { cover_medium: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was' }, duration: 167, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
-                { id: '4', title: 'Heat Waves', artist: { name: 'Glass Animals' }, album: { cover_medium: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves' }, duration: 239, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
-                { id: '5', title: 'Flowers', artist: { name: 'Miley Cyrus' }, album: { cover_medium: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
-                { id: '6', title: 'Anti-Hero', artist: { name: 'Taylor Swift' }, album: { cover_medium: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
-                { id: '7', title: 'Creepin\'', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/8b5cf6/ffffff?text=Creepin' }, duration: 222, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
-                { id: '8', title: 'Rich Flex', artist: { name: 'Drake & 21' }, album: { cover_medium: 'https://placehold.co/300x300/6366f1/ffffff?text=Rich+Flex' }, duration: 238, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' }
+                { id: 'fallback-1', title: 'Blinding Lights', artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+                { id: 'fallback-2', title: 'Shape of You', artist: { name: 'Ed Sheeran' }, album: { cover_medium: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You' }, duration: 233, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+                { id: 'fallback-3', title: 'As It Was', artist: { name: 'Harry Styles' }, album: { cover_medium: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was' }, duration: 167, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+                { id: 'fallback-4', title: 'Heat Waves', artist: { name: 'Glass Animals' }, album: { cover_medium: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves' }, duration: 239, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+                { id: 'fallback-5', title: 'Flowers', artist: { name: 'Miley Cyrus' }, album: { cover_medium: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+                { id: 'fallback-6', title: 'Anti-Hero', artist: { name: 'Taylor Swift' }, album: { cover_medium: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero' }, duration: 200, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+                { id: 'fallback-7', title: "Creepin'", artist: { name: 'The Weeknd' }, album: { cover_medium: 'https://placehold.co/300x300/8b5cf6/ffffff?text=Creepin' }, duration: 222, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+                { id: 'fallback-8', title: 'Rich Flex', artist: { name: 'Drake & 21' }, album: { cover_medium: 'https://placehold.co/300x300/6366f1/ffffff?text=Rich+Flex' }, duration: 238, preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' }
             ];
             return fallbackTracks.map((t, i) => createTrackCard({
                 id: t.id,
@@ -2240,6 +3196,19 @@
                 duration_ms: t.duration * 1000,
                 preview: t.preview
             }, i));
+        }
+        
+        function getFallbackQueue() {
+            return [
+                { id: 'fallback-1', name: 'Blinding Lights', artist: 'The Weeknd', image: 'https://placehold.co/300x300/7c3aed/ffffff?text=Blinding+Lights', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', duration: 200000 },
+                { id: 'fallback-2', name: 'Shape of You', artist: 'Ed Sheeran', image: 'https://placehold.co/300x300/a855f7/ffffff?text=Shape+of+You', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', duration: 233000 },
+                { id: 'fallback-3', name: 'As It Was', artist: 'Harry Styles', image: 'https://placehold.co/300x300/ec4899/ffffff?text=As+It+Was', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', duration: 167000 },
+                { id: 'fallback-4', name: 'Heat Waves', artist: 'Glass Animals', image: 'https://placehold.co/300x300/10b981/ffffff?text=Heat+Waves', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', duration: 239000 },
+                { id: 'fallback-5', name: 'Flowers', artist: 'Miley Cyrus', image: 'https://placehold.co/300x300/f59e0b/ffffff?text=Flowers', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', duration: 200000 },
+                { id: 'fallback-6', name: 'Anti-Hero', artist: 'Taylor Swift', image: 'https://placehold.co/300x300/ef4444/ffffff?text=Anti-Hero', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', duration: 200000 },
+                { id: 'fallback-7', name: "Creepin'", artist: 'The Weeknd', image: 'https://placehold.co/300x300/8b5cf6/ffffff?text=Creepin', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', duration: 222000 },
+                { id: 'fallback-8', name: 'Rich Flex', artist: 'Drake & 21', image: 'https://placehold.co/300x300/6366f1/ffffff?text=Rich+Flex', preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3', duration: 238000 }
+            ];
         }
 
         function getFallbackPlaylists() {
@@ -2363,14 +3332,33 @@
             document.getElementById('tracksContainer').addEventListener('click', (e) => {
                 const card = e.target.closest('.track-card');
                 if (card && card.dataset.track) {
-                    const track = JSON.parse(card.dataset.track);
-                    if (track.preview) {
-                        // Find track index in queue
-                        const index = state.queue.findIndex(t => t.id === track.id);
-                        if (index >= 0) {
-                            state.currentIndex = index;
+                    try {
+                        const track = JSON.parse(card.dataset.track);
+                        console.log('=== TRACK CLICKED ===');
+                        console.log('Track ID:', track.id);
+                        console.log('Track Name:', track.name);
+                        console.log('Track Artist:', track.artist);
+                        console.log('Track Image:', track.image);
+                        console.log('Track Preview URL:', track.preview);
+                        console.log('=====================');
+                        
+                        if (track.preview) {
+                            // Update queue to include this track with correct data
+                            const existingIndex = state.queue.findIndex(q => String(q.id) === String(track.id));
+                            if (existingIndex >= 0) {
+                                state.queue[existingIndex] = track;
+                                state.currentIndex = existingIndex;
+                            } else {
+                                state.queue.unshift(track);
+                                state.currentIndex = 0;
+                            }
+                            playTrack(track);
+                        } else {
+                            console.log('No preview URL available for this track');
+                            alert('Preview not available for this track');
                         }
-                        playTrack(track);
+                    } catch (err) {
+                        console.error('Error parsing track data:', err);
                     }
                 }
             });
@@ -2437,13 +3425,121 @@
         // ==========================================
         
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Consent System
+            initConsentSystem();
+        });
+        
+        function initConsentSystem() {
+            const consentOverlay = document.getElementById('consentOverlay');
+            const consentCheckbox = document.getElementById('consentCheckbox');
+            const acceptBtn = document.getElementById('acceptBtn');
+            const declineBtn = document.getElementById('declineBtn');
+            const cookieBanner = document.getElementById('cookieBanner');
+            const acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
+            const learnMoreBtn = document.getElementById('learnMoreBtn');
+            const consentTabs = document.querySelectorAll('.consent-tab');
+            const consentPanels = document.querySelectorAll('.consent-panel');
+            
+            // Check if already accepted
+            const termsAccepted = localStorage.getItem('nexyra_terms_accepted');
+            const cookiesAccepted = localStorage.getItem('nexyra_cookies_accepted');
+            
+            if (termsAccepted === 'true') {
+                consentOverlay.style.display = 'none';
+                if (cookiesAccepted !== 'true') {
+                    setTimeout(() => {
+                        cookieBanner.classList.add('active');
+                    }, 1000);
+                }
+            } else {
+                consentOverlay.style.display = 'flex';
+            }
+            
+            // Tab switching
+            consentTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.dataset.tab;
+                    
+                    consentTabs.forEach(t => t.classList.remove('active'));
+                    consentPanels.forEach(p => p.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    document.getElementById(`${tabName}Panel`).classList.add('active');
+                });
+            });
+            
+            // Checkbox enables/disables button
+            consentCheckbox.addEventListener('change', () => {
+                acceptBtn.disabled = !consentCheckbox.checked;
+            });
+            
+            // Accept button
+            acceptBtn.addEventListener('click', () => {
+                if (consentCheckbox.checked) {
+                    localStorage.setItem('nexyra_terms_accepted', 'true');
+                    localStorage.setItem('nexyra_cookies_accepted', 'true');
+                    consentOverlay.style.display = 'none';
+                    
+                    // Show cookie banner
+                    setTimeout(() => {
+                        cookieBanner.classList.add('active');
+                    }, 500);
+                    
+                    // Initialize app
+                    initializeApp();
+                }
+            });
+            
+            // Decline button
+            declineBtn.addEventListener('click', () => {
+                if (confirm('Are you sure you want to decline? You will not be able to use the app.')) {
+                    localStorage.clear();
+                    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#050508;color:white;font-family:Arial,sans-serif;text-align:center;padding:20px;"><div><h1 style="margin-bottom:20px;">Access Denied</h1><p style="color:#a1a1aa;">You have declined our Terms and Privacy Policy.<br>To use Nexyra, please refresh the page and accept our policies.</p></div></div>';
+                }
+            });
+            
+            // Cookie banner
+            acceptCookiesBtn.addEventListener('click', () => {
+                localStorage.setItem('nexyra_cookies_accepted', 'true');
+                cookieBanner.classList.remove('active');
+            });
+            
+            learnMoreBtn.addEventListener('click', () => {
+                consentOverlay.style.display = 'flex';
+            });
+        }
+        
+        function initializeApp() {
             lucide.createIcons();
             createParticles();
             initAudio();
             initEventListeners();
+            
+            testDeezerAPI();
             loadInitialData();
             animateHero();
-        });
+            
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 8000);
+        }
+        
+        async function testDeezerAPI() {
+            console.log('=== Testing Deezer API ===');
+            try {
+                const response = await fetch(`https://corsproxy.io/?${encodeURIComponent('https://api.deezer.com/search?q=heat+waves&limit=1')}`);
+                const data = await response.json();
+                console.log('Deezer API Test - Heat Waves:', data);
+                if (data.data && data.data.length > 0) {
+                    const track = data.data[0];
+                    console.log('Real song found:', track.title, 'by', track.artist.name);
+                    console.log('Preview URL:', track.preview);
+                }
+            } catch (e) {
+                console.error('Deezer API test failed:', e);
+            }
+            console.log('=== Deezer API Test Complete ===');
+        }
     </script>
 </body>
 </html>
