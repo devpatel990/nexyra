@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexyra - Premium Music Experience</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed'/%3E%3Cstop offset='50%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23g)'/%3E%3Cpath d='M40 35 L40 65 L70 50 Z' fill='white'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed'/%3E%3Cstop offset='50%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23g)'/%3E%3Cpath d='M40 35 L40 65 L70 50 Z' fill='white'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed'/%3E%3Cstop offset='50%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23g)'/%3E%3Cpath d='M40 35 L40 65 L70 50 Z' fill='white'/%3E%3C/svg%3E">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1724,6 +1730,140 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
         }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 20px 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            padding: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-logo h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .footer-tagline {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-section h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .footer-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: var(--radius-md);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+        }
+        
+        .footer-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .footer-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+            }
+        }
 
         /* Empty State */
         .empty-state {
@@ -2246,6 +2386,53 @@
             </div>
         </div>
     </div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <svg width="40" height="40" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7c3aed"/>
+                                <stop offset="50%" style="stop-color:#a855f7"/>
+                                <stop offset="100%" style="stop-color:#ec4899"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="url(#footerGrad)"/>
+                        <path d="M40 35 L40 65 L70 50 Z" fill="white"/>
+                    </svg>
+                    <h3>Nexyra</h3>
+                </div>
+                <p class="footer-tagline">Premium Music Experience</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact & Support</h4>
+                <p>Need help? We're here for you!</p>
+                <a href="mailto:devpatel43@gmail.com" class="footer-contact-btn">
+                    <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                    devpatel43@gmail.com
+                </a>
+                <p class="footer-note">For support, bug reports, or feature requests, please reach out to us via email.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showTerms(); return false;">Terms of Service</a></li>
+                    <li><a href="#" onclick="showPrivacy(); return false;">Privacy Policy</a></li>
+                    <li><a href="#" onclick="showCookies(); return false;">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nexyra. All rights reserved.</p>
+            <p>Powered by Deezer & Spotify APIs</p>
+        </div>
+    </footer>
 
     <script>
         // ==========================================
@@ -3507,6 +3694,56 @@
             learnMoreBtn.addEventListener('click', () => {
                 consentOverlay.style.display = 'flex';
             });
+        }
+        
+        // Footer functions
+        function showTerms() {
+            const consentOverlay = document.getElementById('consentOverlay');
+            const consentTabs = document.querySelectorAll('.consent-tab');
+            const consentPanels = document.querySelectorAll('.consent-panel');
+            
+            consentTabs.forEach(t => t.classList.remove('active'));
+            consentPanels.forEach(p => p.classList.remove('active'));
+            
+            document.querySelector('[data-tab="terms"]').classList.add('active');
+            document.getElementById('termsPanel').classList.add('active');
+            consentOverlay.style.display = 'flex';
+        }
+        
+        function showPrivacy() {
+            const consentOverlay = document.getElementById('consentOverlay');
+            const consentTabs = document.querySelectorAll('.consent-tab');
+            const consentPanels = document.querySelectorAll('.consent-panel');
+            
+            consentTabs.forEach(t => t.classList.remove('active'));
+            consentPanels.forEach(p => p.classList.remove('active'));
+            
+            document.querySelector('[data-tab="privacy"]').classList.add('active');
+            document.getElementById('privacyPanel').classList.add('active');
+            consentOverlay.style.display = 'flex';
+        }
+        
+        function showCookies() {
+            const consentOverlay = document.getElementById('consentOverlay');
+            const consentTabs = document.querySelectorAll('.consent-tab');
+            const consentPanels = document.querySelectorAll('.consent-panel');
+            
+            consentTabs.forEach(t => t.classList.remove('active'));
+            consentPanels.forEach(p => p.classList.remove('active'));
+            
+            document.querySelector('[data-tab="privacy"]').classList.add('active');
+            document.getElementById('privacyPanel').classList.add('active');
+            
+            // Scroll to cookies section
+            setTimeout(() => {
+                const privacyPanel = document.getElementById('privacyPanel');
+                const cookiesSection = privacyPanel.querySelector('h3:nth-of-type(3)');
+                if (cookiesSection) {
+                    cookiesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+            
+            consentOverlay.style.display = 'flex';
         }
         
         function initializeApp() {
